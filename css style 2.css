@@ -160,6 +160,9 @@ main{
 .card-single:last-child{
     background: #f9db7b;
 }
+body{
+    overflow: hidden;
+}
 
 
 
