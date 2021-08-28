@@ -200,17 +200,6 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
     <script>
-        /*function validateform(){  
-            var pid=document.myform.projectID.value;  
-            var name=document.myform.title.value;
-            if (name==null || name==""){
-            alert("Name can't be blank");  
-            return false;
-        }else if(password.length<6){
-            alert("Password must be at least 6 characters long.");
-            return false;*/
-        
-  
         function getAndUpdate() {
             console.log("Updating List...");
             pid = document.getElementById('projectID').value.required;
@@ -218,7 +207,7 @@
             tit = document.getElementById('title').value;
             desc = document.getElementById('description').value;
             if (localStorage.getItem('itemsJson') == null) {
-               itemJsonArray = [];
+                itemJsonArray = [];
                 itemJsonArray.push([pid, ded, tit, desc]);
                 localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
             }
