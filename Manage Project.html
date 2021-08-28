@@ -132,41 +132,94 @@ img{
         </table>
     </div>
 </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script>
+        
+        function getAndUpdate() {
+            console.log("Updating List...");
+            pid = document.getElementById('pid').value;
+            pname= document.getElementById('pname').value;
+            sdate= document.getElementById('sdate').value;
+            edate= document.getElementById('edate').value;
+            if(pi == "" || pname == ""){
+            alert("Please fill out required fields")
+        }
+        else{ 
+            if (localStorage.getItem('itemsJson') == null) {
+                itemJsonArray = [];
+                itemJsonArray.push([pid, pname, sdate, edate]);
+                localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
+            }
+            else {
+                itemJsonArrayStr = localStorage.getItem('itemsJson')
+                itemJsonArray = JSON.parse(itemJsonArrayStr);
+                itemJsonArray.push([pid, pname, sdate, edate]);
+                localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
+            }
+            update();
+        }}
+           
+
+        function update() {
+            if (localStorage.getItem('itemsJson') == null) {
+                itemJsonArray = [];
+                localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
+            }
+            else {
+                itemJsonArrayStr = localStorage.getItem('itemsJson')
+                itemJsonArray = JSON.parse(itemJsonArrayStr);
+            }
+            // Populate the table
+            let tableBody = document.getElementById("tableBody");
+            let str = "";
+            itemJsonArray.forEach((element, index) => {
+                str += ` 
+                    <tr>
+                    <td scope="row">${element[0]}</td> 
+                    <td>${element[1]}</td>
+                    <td>${element[2]}</td> 
+                    <td>${element[3]}</td>
+                    <td><button class="btn btn-sm btn-primary" onclick="deleted(${index})">Delete</button></td> 
+                    </tr>`;
+            });
+            tableBody.innerHTML = str;
+        }
+        add = document.getElementById("add");
+        add.addEventListener("click", getAndUpdate);
+        update();
+        function deleted(itemIndex) {
+            console.log("Delete", itemIndex);
+            itemJsonArrayStr = localStorage.getItem('itemsJson')
+            itemJsonArray = JSON.parse(itemJsonArrayStr);
+            // Delete itemIndex element from the array
+            itemJsonArray.splice(itemIndex, 1);
+            localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray));
+            update();
+
+        }
+        let e=document.getElementsByClassName("selectpicker");
+        function UpdateChar() {
+            let selectedItem=document.getElementsByClassName("selectpicker").value=e;
+            let strUser=e.options[e.selectedIndex].value;
+            console.log(as, strUser);
+        
+        function clearStorage() {
+            if (confirm("Do you areally want to clear?")) {
+                console.log('Clearing the storage')
+                localStorage.clear();
+                update()
+            }
+        }}
+    </script>
 </body>
-<script>
-    function clearErrors(){
- 
- errors = document.getElementsByClassName('formerror');
- for(let item of errors)
- {
-     item.innerHTML = "";
- }
- }
- 
- function seterror(id, error){
-     //sets error inside tag of id 
-     element = document.getElementById(id);
-     element.getElementsByClassName('formerror')[0].innerHTML = error;
- 
- }
- 
- function validateform(){
-     var returnval = true;
-     clearErrors();
- 
-     var pid = document.forms['myForm']["pid"].value;
-     if (name.length==0){
-         seterror("name", "* Please enter project ID");
-         returnval = false;
-     }
-     var name = document.forms['myForm']["pname"].value;
-     if (name.length==0){
-         seterror("name", "* Please enter project title");
-         returnval = false;
-     }
-     return returnval;
- }
- </script>
-
-
 </html>
