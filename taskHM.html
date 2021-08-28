@@ -120,12 +120,12 @@
                     <span class="input-group-addon" style color: white;> </span>
                    <input type="text" id="projectID" class="input-sm form-control" name="to" placeholder="Project ID" required/>
                 <span class="input-group-addon" style color: white;> </span>
-                <input type="text" id="ddline" class="input-sm form-control" name="to" placeholder="Deadline Details" required />
+                <input type="text" id="ddline" class="input-sm form-control" name="to" placeholder="Deadline Details"/>
             </div>
 
         <div class="form-group required" style="padding-top: 10px;">
             <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" required aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp" required>
             <small id="emailHelp" class="form-text text-muted">Add an item to the list</small>
         </div>
 
@@ -200,15 +200,25 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
     <script>
+        /*function validateform(){  
+            var pid=document.myform.projectID.value;  
+            var name=document.myform.title.value;
+            if (name==null || name==""){
+            alert("Name can't be blank");  
+            return false;
+        }else if(password.length<6){
+            alert("Password must be at least 6 characters long.");
+            return false;*/
+        
   
         function getAndUpdate() {
             console.log("Updating List...");
             pid = document.getElementById('projectID').value.required;
             ded= document.getElementById('todate').value;
-            tit = document.getElementById('title').value.required;
+            tit = document.getElementById('title').value;
             desc = document.getElementById('description').value;
             if (localStorage.getItem('itemsJson') == null) {
-                itemJsonArray = [];
+               itemJsonArray = [];
                 itemJsonArray.push([pid, ded, tit, desc]);
                 localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
             }
