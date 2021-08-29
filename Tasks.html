@@ -74,14 +74,14 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Tasks</a>
+                    <a class="nav-link active" href="#">Tasks</a>
                 </li>
                 <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -202,7 +202,11 @@
             ded= document.getElementById('todate').value;
             tit = document.getElementById('title').value;
             desc = document.getElementById('description').value;
-            if (localStorage.getItem('itemsJson') == null) {
+            if(pid=="" || tit==""){
+                alert("Please fill out required fields");
+            }
+            else{
+                if (localStorage.getItem('itemsJson') == null) {
                 itemJsonArray = [];
                 itemJsonArray.push([pid, ded, tit, desc]);
                 localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
@@ -215,7 +219,8 @@
             }
             update();
         }
-
+ }
+            
         function update() {
             if (localStorage.getItem('itemsJson') == null) {
                 itemJsonArray = [];

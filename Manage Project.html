@@ -64,11 +64,11 @@ img{
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Projects</a>
+                    <a class="nav-link active" href="#">Projects</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Tasks</a>
@@ -82,7 +82,7 @@ img{
     </nav>
     <div class="container">
         <h2 class="text-center">Project Manager</h2>
-    <form name="myForm">
+    <form>
         <div class="form-group">
             <div>
                 <label for="pid">Project ID:</label><br>
@@ -124,7 +124,7 @@ img{
                     <td>1</td>
                     <td>get some coffee</td>
                     <td>2 aug</td>
-                    <td>3 aug</td>  
+                    <td>5 aug</td>  
                     <td><button class="btn btn-sm btn-primary">Delete</button></td>
                 </tr>
 
@@ -144,18 +144,18 @@ img{
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
     <script>
-        
+  
         function getAndUpdate() {
             console.log("Updating List...");
             pid = document.getElementById('pid').value;
             pname= document.getElementById('pname').value;
-            sdate= document.getElementById('sdate').value;
-            edate= document.getElementById('edate').value;
-            if(pi == "" || pname == ""){
-            alert("Please fill out required fields")
-        }
-        else{ 
-            if (localStorage.getItem('itemsJson') == null) {
+            sdate = document.getElementById('sdate').value;
+            edate = document.getElementById('edate').value;
+            if(pid == "" || pname == ""){
+                alert("Please enter required fields");
+            }
+            else{
+                if (localStorage.getItem('itemsJson') == null) {
                 itemJsonArray = [];
                 itemJsonArray.push([pid, pname, sdate, edate]);
                 localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
@@ -167,9 +167,8 @@ img{
                 localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
             }
             update();
-        }}
-           
-
+        }
+    }
         function update() {
             if (localStorage.getItem('itemsJson') == null) {
                 itemJsonArray = [];
@@ -212,14 +211,15 @@ img{
             let selectedItem=document.getElementsByClassName("selectpicker").value=e;
             let strUser=e.options[e.selectedIndex].value;
             console.log(as, strUser);
-        
+
+        }
         function clearStorage() {
             if (confirm("Do you areally want to clear?")) {
                 console.log('Clearing the storage')
                 localStorage.clear();
                 update()
             }
-        }}
+        }
     </script>
 </body>
 </html>
