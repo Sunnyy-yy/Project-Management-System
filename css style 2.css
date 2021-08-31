@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 :root{
-    --main-color: #dd2f6e;
+    --main-color: #343a40;
     --color-dark: #1d2231;
     --text-grey: #8390a2;  
   }
@@ -58,7 +58,7 @@
 }
 
 .sidebar-menu a.active{
-    background: #f9db7b;
+    background: #fff;
     padding-top: 1rem;
     padding-bottom: 1rem;
     color: var(--main-color);
@@ -76,7 +76,7 @@
 header{
     display: flex;
     justify-content: space-between;
-    background: #f9db7b;
+    background: #fff;
     padding: 1rem, 1.5rem;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
     position: fixed;
@@ -150,27 +150,30 @@ main{
 
 .card-single div:last-child span{
     font-size: 1rem;
-    color: var(--color-dark);
+    color: #fff;
 
 }
 
 .card-single div:first-child span{
-    color: var(--main-color);
+    color: #fff;
 }
 
 .card-single:last-child{
-    background: #f9db7b;
+    background: #474e53;
+    color: #fff;
 }
-body{
-    overflow: hidden;
-}
+
 #top-width {
     padding-bottom: 2rem;
+    background: #343a40;
 }
 #text {
     margin-top: 5px;
+    
 }
-
+#bg-color {
+    background-color: #343a40;
+}
 
 
 

@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>PMS</title>
-    <link rel="shortcut icon" type="image/jpg" href="https://1000logos.net/wp-content/uploads/2017/08/OVO-Logo.png"/>
+        <title>Project Management</title>
+        <link rel="shortcut icon" type="image/jpg" href="https://1000logos.net/wp-content/uploads/2017/08/OVO-Logo.png"/>
 </head>
 <style>
 body {
@@ -65,19 +65,22 @@ img{
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="Dashboard.html">Dashboard <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="#">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Tasks</a>
+                    <a class="nav-link" href="Chart.html">Graph</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Contact</a>
+                    <a class="nav-link" href="Tasks.html">Tasks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="table.html">Report</a>
                 </li>
             </ul>
-            <button class="btn btn-outline-dark btn-danger my-5 my-sm-3" type="submit">Logout</button>
+            <button class="btn btn-outline-dark btn-danger my-5 my-sm-3" type="submit" onclick="logout();">Logout</button>
         </div>
     </nav>
     <div class="container">
@@ -221,5 +224,10 @@ img{
             }
         }
     </script>
+    <script text/javascript>
+        function logout() {
+        window.location.href = "index.html";
+      }
+        </script>
 </body>
 </html>
