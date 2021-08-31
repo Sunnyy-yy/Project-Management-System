@@ -32,24 +32,44 @@ let sdk = {
   },
   login :async function (username, password ) {
     // GeApi ('POST', '/auth', {"Content-Type": "application/json"} , {"username": username , "password": password} );
-    const response = await fetch(this.base_url + '/api/v2/user/session', {
+    return fetch(this.base_url + '/api/v2/user/session', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ "email": username, "password": password })
-    });
-    const resp = await response.json();
-    if (resp.hasOwnProperty('session_token')) {
-      this.parseJwt(resp.session_token);
-      Object.entries(resp).forEach(([k, v]) => {
-        sessionStorage.setItem(k, v);
-        console.log(k, v);
-      });
-      console.log("in login ..");
-      login_status = (n => n = 1);
-      return true;
-    } else {
-      return false;
-    }},
+    }).then((response ) => {
+      return response.json();
+
+    }).then((resp) => {
+    
+     
+      if (resp.hasOwnProperty('session_token')){
+        this.parseJwt(resp.session_token);
+        Object.entries(resp).forEach(([k,v]) => {
+          sessionStorage.setItem(k, v);
+        //  console.log(k,v);
+        });
+        //console.log("in login ..");
+        // login_status.update(n => n = 1);
+        return true;
+      }else{
+        return false;
+      }
+ 
+
+    });},
+    // const resp = await response.json();
+    // if (resp.hasOwnProperty('session_token')) {
+    //   this.parseJwt(resp.session_token);
+    //   Object.entries(resp).forEach(([k, v]) => {
+    //     sessionStorage.setItem(k, v);
+    //     console.log(k, v);
+    //   });
+    //   console.log("in login ..");
+    //   login_status = (n => n = 1);
+    //   return true;
+    // } else {
+    //   return false;
+    // }},
     api: async function  (method, url, headers_args, body_args) {
       if (body_args) {
         body_args = JSON.stringify(body_args);

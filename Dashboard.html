@@ -12,8 +12,8 @@
     <div class="sidebar">
         <div class="sidebar-brand">
             <h2> 
-                <i class="las la-dove"></i>
-                Choronos
+                
+                <p id="text">Choronos </p>
             </h2>
         </div>
         <div class="sidebar-menu">
@@ -58,26 +58,33 @@
                         </span>
                     </a>
                 </li>
+                <li>
+                    <a href="javascript:logout()" class="active" >
+                        <i class="las la-sign-out-alt"></i>
+                        <span>
+                            Logout
+                        </span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
     <div class="main-content"> 
         <header>
-            <h2> 
+            <h2 id="top-width"> 
                 <label for="">
-                    <img src="https://1000logos.net/wp-content/uploads/2017/08/OVO-Logo.png" width="40px" height="40px" alt="">
+                    &nbsp;
                 </label>
-            Dashboard
+            
             </h2>
             <div class="search-wrapper">
-                <i class="las la-search"></i>
-                <input type="search" placeholder="Search Here"/>
+                
+                
             </div>
             <div class="user-wrapper">
                 
                 <div>
-                    <h4>Sunny</h4>
-                    <small>Admin</small>
+                   
                 </div>
             </div>
         </header>
@@ -118,7 +125,13 @@
                     <i class="las la-clipboard-check"></i>
                 </div>
             </div>
+            
         </main>
     </div>
+    <script text/javascript>
+    function logout() {
+    window.location.href = "index.html";
+  }
+    </script>
 </body>
 </html>

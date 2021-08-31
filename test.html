@@ -89,15 +89,14 @@ function getAPI (){
       console.log("Retrieving")
   await sdk
     .api(
-        'GET',
-        '/api/v2/pg/_table/tsk.project',
-        { 'Content-Type': 'application/json' },
+        fetch('/api/v2/pg/_table/tsk.project'),
+        { 'Content-Type': application/json },
         null 
     )
     .then(response => {
 
     console.log(response);
-       
+       responce.json();
     })
     .catch(error => {
         console.log(error + "error ");
@@ -134,9 +133,10 @@ function getAPI (){
 })();
   }
   
-  document.onload = function(e){
+  window.onload = function(e){
   
     tryIn();
+    getAPI();
   
   } 
   </script>
