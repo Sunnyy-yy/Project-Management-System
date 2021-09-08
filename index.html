@@ -64,6 +64,8 @@ button:hover {
 
 <script type="text/javascript">
   async function tryIn() {
+    getAPI();
+          postAPI ();
   
     console.log("calling ..")
     await sdk.login( document.getElementById('username').value, 
@@ -79,8 +81,7 @@ button:hover {
               return false;
             }
           
-          getAPI();
-          postAPI ();
+          
         });
   };
 

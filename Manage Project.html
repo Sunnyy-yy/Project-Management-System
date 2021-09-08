@@ -104,7 +104,7 @@ img{
         <input type="date" id="edate"  class="input-sm form-control" name="edate"><br>
             </div>
 
-            <button id="add" class="btn btn-primary">Add to list</button>
+            <button id="add" class="btn btn-primary" onclick="addproject()">Add to list</button>
             <button id="clear" class="btn btn-primary" onclick="clearStorage()">Clear list</button>
          </div>
     </form>
@@ -147,7 +147,9 @@ img{
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
     <script>
-  
+        function addproject() {
+            
+        }
         function getAndUpdate() {
             console.log("Updating List...");
             pid = document.getElementById('pid').value;
